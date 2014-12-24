@@ -2,7 +2,7 @@ jQuery Sticky
 =============
 
 A jQuery plugin that sticks an element while scrolling.
-See the [demo](#).
+See the [demo](http://raphaellefebvre.be/sticky/).
 
 
 ## A. Install
