@@ -30,7 +30,7 @@ module.exports = function(grunt) {
         },
 
         jshint: {
-            files: ['dist/jquery.sticky.min.js'],
+            files: ['dist/jquery.sticky.js'],
             options: {
                 globals: {
                     console: true,
@@ -55,6 +55,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-concat');
 
     grunt.registerTask('test', ['concat', 'qunit']);
-    grunt.registerTask('default', ['concat', 'jshint', 'qunit', 'uglify']);
+    grunt.registerTask('default', ['concat', 'uglify', 'jshint', 'qunit']);
 
 };

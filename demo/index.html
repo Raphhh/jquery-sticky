@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Sticky</title>
+    <link rel="stylesheet" href="asset/main.css"/>
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="../dist/jquery.sticky.min.js"></script>
+    <script>
+        $(function(){
+            $('nav').sticky()
+                    .on('stick', function(){
+                        console.debug('stick event', this);
+                    })
+                    .on('unstick', function(){
+                        console.debug('unstick event', this);
+                    });
+        });
+    </script>
+</head>
+<body>
+
+    <section></section>
+    <nav>I'm sticky!</nav>
+    <section></section>
+    <nav>That's pretty cool!</nav>
+    <section></section>
+    <nav>You got it!</nav>
+    <section></section>
+    <nav>Last one...</nav>
+    <section></section>
+    <section></section>
+</body>
+</html>
