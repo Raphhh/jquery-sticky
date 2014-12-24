@@ -12,11 +12,12 @@
             settings = $.extend({
                 top: '0',
                 width: '100%',
-                'z-index': '10000000'
+                'z-index': '10000000',
+                superposition: false
             }, options );
 
         var calculateTop = function($currentStuckTag, index){
-            if(index){
+            if(!settings.superposition && index){
                 var $previousStuckTag = $stuckTags.eq(index-1);
                 if($previousStuckTag.length){
                     return parseFloat($previousStuckTag.css('top')) + $previousStuckTag.outerHeight() + parseFloat($currentStuckTag.css('margin-top'));

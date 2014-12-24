@@ -37,6 +37,7 @@ $.fn.sticky accepts the following options:
 <script>
     $(function(){
         $('nav').sticky({
+            superposition: false, //indicates if the different elements stick over the previous
             top: '0', //in px, the distance from the top of the page. To remove the default value, use 'inherit' value.
             width: '100%', //the width value applied when the element is stuck. To remove the default value, use 'inherit' value.
             'z-index': '10000000' //the z-index value applied when the element is stuck. To remove the default value, use 'inherit' value.
