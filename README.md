@@ -1,7 +1,7 @@
 jQuery Sticky
 =============
 
-A jQuery plugin that sticks an element while scrolling.
+A jQuery plugin that sticks an element (a navigation bar for example) while scrolling. It is simple to setup. It can be added to any existing page without the need to change the HTML mark up.
 See the [demo](http://raphaellefebvre.be/sticky/).
 
 
@@ -13,7 +13,7 @@ For example, use this cdn:
 <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 ```
 
-2) [Download the Sticky library](https://github.com/Raphhh/jquery-sticky/archive/master.zip), and include 'dist/jquery.sticky.min.js' in your html.
+2) [Download the Sticky library](https://github.com/Raphhh/jquery-sticky/archive/master.zip), and include *dist/jquery.sticky.min.js* in your html.
 For example:
 ```html
 <script src="asset/raphhh/jquery-sticky/dist/jquery.sticky.min.js"></script>
