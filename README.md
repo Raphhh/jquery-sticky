@@ -4,6 +4,7 @@ jQuery Sticky
 A jQuery plugin that sticks an element (a navigation bar for example) while scrolling. It is simple to setup. It can be added to any existing page without the need to change the HTML mark up.
 See the [demo](http://raphaellefebvre.be/sticky/).
 
+If you select several elements, all be stuck. They can be placed side by side, or be superimposed (see options).
 
 ## A. Install
 
@@ -48,16 +49,15 @@ $.fn.sticky accepts the following options:
 
 ### B.2. Events
 
-You can attach two events:
+Sticky works with two events:
 
-#### stick event
+#### *stick* event
 
-This event is dispatched when the element is stuck.
+This event is dispatched when an unstuck element becomes stuck.
 ```html
 <script>
     $(function(){
-        $('nav').sticky()
-        .on('stick', function(event, scrollPosition){
+        $('nav').on('stick', function(event, scrollPosition){
             console.debug('stick event', this);
         });
     });
@@ -68,20 +68,27 @@ You can trigger this event on the element to force the stick.
 ```html
 <script>
     $(function(){
-        $('nav').sticky()
-        .trigger('stick');
+        $('nav').trigger('stick');
     });
 </script>
 ```
 
-#### unstick event
-
-This event is dispatched when the element is unstuck.
+You can also remove this event from the element to avoid the stick. Once unstuck, an element will never stick anymore.
 ```html
 <script>
     $(function(){
-        $('nav').sticky()
-        .on('unstick', function(event, scrollPosition){
+        $('nav').off('stick');
+    });
+</script>
+```
+
+#### *unstick* event
+
+This event is dispatched when a stuck element becomes unstuck.
+```html
+<script>
+    $(function(){
+        $('nav').on('unstick', function(event, scrollPosition){
             console.debug('unstick event', this);
         });
     });
@@ -92,8 +99,16 @@ You can trigger this event on the element to force the unstick.
 ```html
 <script>
     $(function(){
-        $('nav').sticky()
-        .trigger('unstick');
+        $('nav').trigger('unstick');
+    });
+</script>
+```
+
+You can also remove this event from the element to avoid the unstick. Once stuck, an element will never unstick anymore.
+```html
+<script>
+    $(function(){
+        $('nav').off('unstick');
     });
 </script>
 ```
