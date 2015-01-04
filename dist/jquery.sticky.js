@@ -8,7 +8,7 @@
 
     $.fn.sticky = function( options ) {
 
-        var $stuckTags = this,
+        var $stuckableTags = this,
             settings = $.extend({
                 top: '0',
                 width: '100%',
@@ -18,7 +18,7 @@
 
         var calculateTop = function($currentStuckTag, index){
             if(!settings.superposition && index){
-                var $previousStuckTag = $stuckTags.eq(index-1);
+                var $previousStuckTag = $stuckableTags.eq(index-1);
                 if($previousStuckTag.length){
                     return parseFloat($previousStuckTag.css('top')) + $previousStuckTag.outerHeight() + parseFloat($currentStuckTag.css('margin-top'));
                 }
@@ -31,20 +31,29 @@
         };
 
         $(window).scroll(function(){
-            var position = $(this).scrollTop();
-            $stuckTags.each(function(index){
-                var $this = $(this);
-                if(isStuckable(position, $this, index)){
-                    if($this.hasClass('unstuck')){
-                        $this.trigger('stick', position);
-                    }
-                }else if($this.hasClass('stuck')){
-                    $this.trigger('unstick', position);
-                }
-            });
-        });
+                    var position = $(this).scrollTop();
+                    $stuckableTags.each(function(index){
+                        var $this = $(this);
+                        if(isStuckable(position, $this, index)){
+                            if($this.hasClass('unstuck')){
+                                $this.trigger('stick', position);
+                            }
+                        }else if($this.hasClass('stuck')){
+                            $this.trigger('unstick', position);
+                        }
+                    });
+                })
+                .resize(function(){
+                    var $stuckTags = $stuckableTags.filter('.stuck');
+                    $stuckTags.trigger('unstick');
+                    $stuckableTags.each(function(){
+                        var $this = $(this);
+                        $this.data('initial-offset', $this.offset());
+                    });
+                    $stuckTags.trigger('stick');
+                });
 
-        return $stuckTags.each(function(index){
+        return $stuckableTags.each(function(index){
             var $this = $(this);
             $this.data('initial-offset', $this.offset())
                 .addClass('unstuck')
