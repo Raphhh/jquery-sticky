@@ -27,7 +27,7 @@
         };
 
         var isStuckable = function(position, $tag, tagIndex){
-            return position + (calculateTop($tag, tagIndex)*2) >= $tag.data('initial-offset').top
+            return position + calculateTop($tag, tagIndex) >= $tag.data('initial-offset').top
         };
 
         $(window).scroll(function(){
@@ -58,7 +58,10 @@
             $this.data('initial-offset', $this.offset())
                 .addClass('unstuck')
                 .on('stick', function(){
-                    $(this).toggleClass('stuck unstuck').css({
+                    var $this = $(this);
+                    var $clone = $this.clone();
+                    $this.after($clone).data('clone', $clone);
+                    $this.toggleClass('stuck unstuck').css({
                         position: 'fixed',
                         top: calculateTop($this, index),
                         width: settings.width,
@@ -66,7 +69,9 @@
                     });
                 })
                 .on('unstick', function(){
-                    $(this).toggleClass('stuck unstuck').css({
+                    var $this = $(this);
+                    $this.data('clone').remove();
+                    $this.toggleClass('stuck unstuck').css({
                         position: 'inherit',
                         top: 'inherit',
                         width: 'inherit',
