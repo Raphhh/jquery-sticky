@@ -12,19 +12,19 @@ section{
     background: #DF5A49;
 }
 
-section:nth-child(1){
+.first{
     background: #334D5C;
 }
 
-section:nth-child(3){
+.second{
     background: #45B29D;
 }
 
-section:nth-child(5){
+.third{
     background: #EFC94C;
 }
 
-section:nth-child(7){
+.fourth{
     background: #E27A3F;
 }
 
